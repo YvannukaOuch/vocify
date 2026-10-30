@@ -1,0 +1,22 @@
+{
+  "name": "voicify",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "server",
+    "webapp"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,webapp -c blue,magenta \"npm run dev -w server\" \"npm run dev -w webapp\"",
+    "build": "npm run build -w webapp",
+    "start": "npm run start -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w webapp",
+    "test": "npm test -w server"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

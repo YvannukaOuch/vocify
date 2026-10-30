@@ -1,0 +1,23 @@
+[Unit]
+Description=Voicify soundboard (Telegram bot + Mini App)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=voicify
+Group=voicify
+WorkingDirectory=/opt/voicify/server
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node --env-file=.env src/index.ts
+Restart=always
+RestartSec=5
+
+# Light sandboxing: read-only /usr and /etc, private /tmp for the clip work files.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

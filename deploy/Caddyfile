@@ -1,0 +1,6 @@
+# /etc/caddy/Caddyfile — replace the domain with yours (its DNS A record must point at the VPS).
+# Caddy gets and renews the HTTPS certificate on its own.
+soundboard.example.com {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3000
+}
